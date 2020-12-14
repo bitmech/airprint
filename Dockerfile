@@ -1,15 +1,7 @@
-
-
-
-
-
-# first stage
+#Based on https://hub.docker.com/r/firilith/airprint
 FROM firilith/airprint
 
-# second unnamed stage
-#WORKDIR /opt/cecmonitor
+#Xerox Phaser 6000b driver and any otherw 
 COPY ./drivers .
-# Install git, ssh and mariadb-dev
-RUN dpkg --add-architecture i386 && apt-get -y update && apt-get -y install libcupsimage2:i386 lib32stdc++6 && dpkg -i *.deb && apt-get clean && rm -f /var/lib/apt/lists/*_*
 
-#CMD [ "sh", "-c", "python ./cecmonitor.py -i $TV_IP_ADDRESS $ADDITIONAL_ARGS" ]
+RUN dpkg --add-architecture i386 && apt-get -y update && apt-get -y install libcupsimage2:i386 lib32stdc++6 && dpkg -i *.deb && apt-get clean && rm -f /var/lib/apt/lists/*_*
